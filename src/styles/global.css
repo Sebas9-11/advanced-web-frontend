@@ -1,0 +1,26 @@
+:root {
+  /* here are the global styles */
+  --primary-color: #252e48;
+  --secondary-color: #f5222d;
+  --disabled-color: #d6d8d9;
+  --black-color: #000000;
+  --white-color: #ffffff;
+  --alert-color: #fad000;
+  --success-color: #52c41a;
+  --error-color: #f8d7da;
+  --font-size-sm1: 0.25rem;
+  --font-size-sm2: 0.5rem;
+  --font-size-sm3: 0.75rem;
+  --font-size-md1: 1rem;
+  --font-size-md2: 1.25rem;
+  --font-size-md3: 1.5rem;
+  --font-size-lg1: 2rem;
+  --font-size-lg2: 3rem;
+  --font-size-lg3: 4rem;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
