@@ -5,8 +5,8 @@ interface ProviderProps {
   children: React.ReactNode
 }
 
-const Provider = ({ children }: ProviderProps) => {
+const Providers = ({ children }: ProviderProps) => {
   return <AuthProvider>{children}</AuthProvider>
 }
 
-export default Provider
+export default Providers
