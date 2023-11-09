@@ -1,5 +1,5 @@
 import HomeLayout from '../../../layouts/homeLayout'
-import styles from './AddProduct.module.css'
+import styles from './addProduct.module.css'
 import Tables from '../../tables'
 import { employeeData } from '../../../constants/employee'
 import HttpEmployeeApiService from '../../../APIs/employee'
