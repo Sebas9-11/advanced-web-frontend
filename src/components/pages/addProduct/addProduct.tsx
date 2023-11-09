@@ -2,22 +2,22 @@ import HomeLayout from '../../../layouts/homeLayout'
 import styles from './addProduct.module.css'
 import Tables from '../../tables'
 import { employeeData } from '../../../constants/employee'
-import HttpEmployeeApiService from '../../../APIs/employee'
-import { useEffect } from 'react'
+// import HttpEmployeeApiService from '../../../APIs/employee'
+// import { useEffect } from 'react'
 
 export default function AddProductPage() {
-  const apiService = HttpEmployeeApiService()
+  // const apiService = HttpEmployeeApiService()
 
-  useEffect(() => {
-    apiService
-      .get()
-      .then((res) => {
-        console.log(res)
-      })
-      .catch((err) => {
-        console.log(err)
-      })
-  }, [])
+  // useEffect(() => {
+  //   apiService
+  //     .get()
+  //     .then((res) => {
+  //       console.log(res)
+  //     })
+  //     .catch((err) => {
+  //       console.log(err)
+  //     })
+  // }, [])
 
   return (
     <HomeLayout>
