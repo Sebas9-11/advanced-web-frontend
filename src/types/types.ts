@@ -6,10 +6,10 @@ export interface rol {
 }
 
 export interface employee {
-  id: number
-  rol: rolType
+  employee_id: number
+  rol_id: rolType
   name: string
-  lastName: string
+  last_name: string
   state: boolean
 }
 
