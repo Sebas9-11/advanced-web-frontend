@@ -25,7 +25,7 @@ const columns = [
   {
     title: 'Rol',
     dataIndex: 'rol_id',
-    key: 'rol_id',
+    key: 'rol',
   },
   {
     title: 'Estado',

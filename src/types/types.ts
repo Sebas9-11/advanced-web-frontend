@@ -7,7 +7,7 @@ export interface rol {
 
 export interface employee {
   employee_id: number
-  rol_id: rolType
+  rol: rolType
   name: string
   last_name: string
   state: boolean
