@@ -1,60 +1,50 @@
-import { Table, Space, Button } from 'antd'
+import { Table } from 'antd'
+import { tableHeader } from '../../types/types'
+import BasicBtn from '../basicBtn'
 import styles from './styles.module.css'
 
 interface ITablesProps {
-  data: any
-  onClick: () => void
+  header: tableHeader[]
+  data: any[]
+  ActionEdit: (record: any) => void
+  ActionDelete: (record: any) => void
 }
 
-const columns = [
-  {
-    title: 'ID',
-    dataIndex: 'employee_id',
-    key: 'employee_id',
-  },
-  {
-    title: 'Nombre',
-    dataIndex: 'name',
-    key: 'name',
-  },
-  {
-    title: 'Apellido',
-    dataIndex: 'last_name',
-    key: 'last_name',
-  },
-  {
-    title: 'Rol',
-    dataIndex: 'rol_id',
-    key: 'rol_id',
-  },
-  {
-    title: 'Estado',
-    dataIndex: 'state',
-    key: 'state',
-    render: (state: boolean) => (state ? 'Activo' : 'Inactivo'),
-  },
-  {
-    title: 'Acciones',
-    key: 'action',
-    render: () => (
-      <Space size="middle">
-        <Button type="primary">Edit</Button>
-        <Button type="primary" danger>
-          Delete
-        </Button>
-      </Space>
-    ),
-  },
-]
+export default function Tables({
+  data,
+  header,
+  ActionEdit,
+  ActionDelete,
+}: ITablesProps) {
+  const renderActionsColumn = (_text: string, record: any) => {
+    return (
+      <div className={styles.actions}>
+        <BasicBtn
+          text="Editar"
+          color="#28a745"
+          onClick={() => ActionEdit(record)}
+        />
+        <BasicBtn
+          text="Eliminar"
+          color="#dc3545"
+          onClick={() => ActionDelete(record)}
+        />
+      </div>
+    )
+  }
 
-export default function Tables({ data, onClick }: ITablesProps) {
+  const columns = [
+    ...header,
+    {
+      title: 'Acciones',
+      dataIndex: 'actions',
+      key: 'actions',
+      render: renderActionsColumn,
+    },
+  ]
+
   return (
     <div className={styles.table_container}>
-      <Space>
-        <Button className={styles.add_employee_btn} onClick={onClick}>
-          Add
-        </Button>
-      </Space>
       <Table dataSource={data} columns={columns} />
     </div>
   )

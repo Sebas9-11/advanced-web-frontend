@@ -41,3 +41,10 @@ export interface employeeProduction {
   date: string
   price: number
 }
+
+export interface tableHeader {
+  title: string
+  dataIndex: string
+  key: string
+  actions?: React.ReactNode
+}

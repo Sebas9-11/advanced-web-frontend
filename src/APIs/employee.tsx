@@ -2,19 +2,18 @@ import axios from 'axios'
 import { employee } from '../types/types'
 
 export default function HttpEmployeeApiService() {
-  const path = 'http://127.0.0.1:5000/'
+  const path = 'https://shoes-maker-78e124fd97e0.herokuapp.com/'
 
-  const getEmployees = async (setData: any) => {
-    axios({
-      method: 'get',
-      url: path + 'employees',
-    })
-      .then((res) => {
-        setData(res.data)
-      })
-      .catch((err) => {
-        console.log(err)
-      })
+  function getRoles() {
+    return axios.get(path + 'roles')
+  }
+
+  function getEmployees() {
+    return axios.get(path + 'employees')
+  }
+
+  function deleteEmployee(id: number) {
+    return axios.delete(path + 'employees/' + id)
   }
 
   const addEmployee = async (data: employee) => {
@@ -47,6 +46,8 @@ export default function HttpEmployeeApiService() {
 
   return {
     getEmployees,
+    deleteEmployee,
+    getRoles,
     addEmployee,
     updateEmployee,
   }

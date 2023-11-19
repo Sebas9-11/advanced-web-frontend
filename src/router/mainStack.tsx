@@ -1,5 +1,5 @@
 import { Route, Routes } from 'react-router-dom'
-import { NotFound, Home, Login, AddProduct } from '../pages'
+import { Employee, Home, Login, NotFound, Product, Roles } from '../pages'
 
 export default function MainStack() {
   return (
@@ -7,7 +7,9 @@ export default function MainStack() {
       <Route path="/" element={<Login />} />
 
       <Route path="/home" element={<Home />} />
-      <Route path="/add_product" element={<AddProduct />} />
+      <Route path="/employee" element={<Employee />} />
+      <Route path="/roles" element={<Roles />} />
+      <Route path="/product" element={<Product />} />
 
       <Route path="/NotFound" element={<NotFound />} />
     </Routes>

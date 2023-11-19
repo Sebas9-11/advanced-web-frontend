@@ -1,3 +1,8 @@
+.item {
+  display: flex;
+  flex-direction: column;
+}
+
 .add_employee_btn {
   width: 40px;
   height: 40px;
@@ -5,18 +10,11 @@
   border-radius: 50%;
   background-color: var(--success-color);
   color: var(--white-color);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 80%;
 }
 
-.table_container {
-  width: 100%;
-}
-
-.actions {
-  width: min-content;
+.btn_container {
   display: flex;
-  gap: 1rem;
+  align-items: flex-end;
+  justify-content: flex-end;
+  margin: 0 0 0.5rem 0;
 }

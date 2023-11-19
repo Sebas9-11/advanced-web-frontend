@@ -1,4 +1,6 @@
 export { default as NotFound } from './404'
+export { default as Employee } from './employee'
 export { default as Home } from './home'
 export { default as Login } from './login'
-export { default as AddProduct } from './addProduct'
+export { default as Product } from './product'
+export { default as Roles } from './roles'
