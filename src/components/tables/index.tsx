@@ -8,6 +8,8 @@ interface ITablesProps {
   data: any[]
   ActionEdit: (record: any) => void
   ActionDelete: (record: any) => void
+  textBtn1: string
+  textBtn2: string
 }
 
 export default function Tables({
@@ -15,17 +17,19 @@ export default function Tables({
   header,
   ActionEdit,
   ActionDelete,
+  textBtn1,
+  textBtn2
 }: ITablesProps) {
   const renderActionsColumn = (_text: string, record: any) => {
     return (
       <div className={styles.actions}>
         <BasicBtn
-          text="Editar"
+          text={textBtn1}
           color="#28a745"
           onClick={() => ActionEdit(record)}
         />
         <BasicBtn
-          text="Eliminar"
+          text={textBtn2}
           color="#dc3545"
           onClick={() => ActionDelete(record)}
         />
@@ -45,7 +49,9 @@ export default function Tables({
 
   return (
     <div className={styles.table_container}>
-      <Table dataSource={data} columns={columns} />
+      <Table
+      pagination={{pageSize:4}}
+      dataSource={data} columns={columns} />
     </div>
   )
 }

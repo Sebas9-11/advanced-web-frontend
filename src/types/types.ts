@@ -24,10 +24,14 @@ export interface product {
 
 export interface production {
   id?: number
-  employeeId: number
-  productId: number
-  quantity: number
-  date: string
+  primer_nombre: string
+  apellido: string
+  nombre_rol: string
+  cantidad: number
+  fecha: string
+  id_producto: number
+  usuario_id: number
+  nombre_producto: string
 }
 
 export interface employeeProduction {

@@ -77,6 +77,8 @@ export default function EmployeePage() {
           />
         </div>
         <Tables
+          textBtn1='editar'
+          textBtn2='eliminar'
           data={data}
           header={header}
           ActionEdit={handleEdit}

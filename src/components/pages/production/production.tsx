@@ -1,19 +1,21 @@
 import { useEffect, useState } from 'react'
-import HttpEmployeeApiService from '../../../APIs/employee'
 import HomeLayout from '../../../layouts/homeLayout'
-import { employee, tableHeader } from '../../../types/types'
+import { production, tableHeader } from '../../../types/types'
 import Tables from '../../tables'
-import styles from './roles.module.css'
+import styles from './production.module.css'
+import HttpProductionApiService from './../../../APIs/production';
+import pdfMake from 'pdfmake/build/pdfmake'
 
-export default function RolesPage() {
-  const [data, setData] = useState<employee[]>([])
+
+export default function ProductionPage() {
+  const [data, setData] = useState<production[]>([])
   const [header, setHeader] = useState<tableHeader[]>([])
-  const httpEmployeeApiService = HttpEmployeeApiService()
+  const httpEmployeeApiService = HttpProductionApiService()
 
   const getEmployees = async () => {
-    const res = await httpEmployeeApiService.getRoles()
+    const res = await httpEmployeeApiService.getProduction()
     setData(res.data)
-
+    
     const keys = Object.keys(res.data[0])
     const header: tableHeader[] = keys.map((key) => {
       const formattedKey = key
@@ -34,12 +36,14 @@ export default function RolesPage() {
     getEmployees()
   }, [])
 
-  const handleEdit = (employee: employee) => {
-    console.log(employee)
+
+
+  const handleEdit = () => {
+    pdfMake.createPdf('farid').open();
   }
 
-  const handleDelete = (employee: employee) => {
-    httpEmployeeApiService.deleteEmployee(employee?.employee_id as number)
+  const handleDelete = (employee: production) => {
+    // httpEmployeeApiService.deleteEmployee(employee?.employee_id as number)
   }
 
   return (
@@ -49,8 +53,8 @@ export default function RolesPage() {
       </header>
       <section>
         <Tables
-          textBtn1='editar'
-          textBtn2='eliminar'
+          textBtn1='pdf'
+          textBtn2='delete'
           data={data}
           header={header}
           ActionEdit={handleEdit}

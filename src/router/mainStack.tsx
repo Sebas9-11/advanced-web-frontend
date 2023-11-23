@@ -1,5 +1,5 @@
 import { Route, Routes } from 'react-router-dom'
-import { Employee, Home, Login, NotFound, Product, Roles } from '../pages'
+import { Employee, Home, Login, NotFound, Product, Roles, Production} from '../pages'
 
 export default function MainStack() {
   return (
@@ -8,6 +8,7 @@ export default function MainStack() {
 
       <Route path="/home" element={<Home />} />
       <Route path="/employee" element={<Employee />} />
+      <Route path="/production" element={<Production />} />
       <Route path="/roles" element={<Roles />} />
       <Route path="/product" element={<Product />} />
 
