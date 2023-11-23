@@ -4,10 +4,10 @@ import { IUserPayload, IUserState, USER_ACTION } from '../../types/user'
 export const initialState: IUserState = {
   currentUser: {
     employee_id: 0,
-    rol_id: '',
+    rol_id: 0,
     name: '',
     last_name: '',
-    state: false,
+    status: false,
   },
 }
 

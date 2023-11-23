@@ -39,7 +39,7 @@ export default function RolesPage() {
   }
 
   const handleDelete = (employee: employee) => {
-    httpEmployeeApiService.deleteEmployee(employee.employee_id)
+    httpEmployeeApiService.deleteEmployee(employee?.employee_id as number)
   }
 
   return (
