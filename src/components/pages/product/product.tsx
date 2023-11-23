@@ -3,6 +3,7 @@ import HttpProductsApiService from '../../../APIs/product'
 import HomeLayout from '../../../layouts/homeLayout'
 import { product, tableHeader } from '../../../types/types'
 import BasicBtn from '../../basicBtn'
+import ProductModal from '../../modals/productModal'
 import Tables from '../../tables'
 import styles from './product.module.css'
 
@@ -10,6 +11,8 @@ export default function ProductPage() {
   const [data, setData] = useState<product[]>([])
   const [header, setHeader] = useState<tableHeader[]>([])
   const httpProductsApiService = HttpProductsApiService()
+  const [open, setOpen] = useState<boolean>(false)
+  const [reload, setReload] = useState<boolean>(false)
 
   const getProducts = async () => {
     const res = await httpProductsApiService.getProduct()
@@ -33,14 +36,25 @@ export default function ProductPage() {
 
   useEffect(() => {
     getProducts()
-  }, [])
+  }, [reload])
 
   const handleEdit = (product: product) => {
     console.log(product)
   }
 
   const handleDelete = (product: product) => {
-    httpProductsApiService.deleteProduct(product.id)
+    try {
+      httpProductsApiService.deleteProduct(product.product_id as number)
+    } catch (error) {
+      console.error('Error deleting product:', error)
+    } finally {
+      setReload(true)
+    }
+  }
+
+  const handleModal = () => {
+    setOpen(!open)
+    console.log('modal', open)
   }
 
   return (
@@ -50,7 +64,11 @@ export default function ProductPage() {
       </header>
       <section>
         <div className={styles.btn_container}>
-          <BasicBtn text="Add new product" color="blue" onClick={() => ''} />
+          <BasicBtn
+            text="Add product"
+            color="blue"
+            onClick={() => handleModal()}
+          />
         </div>
         <Tables
           data={data}
@@ -59,6 +77,11 @@ export default function ProductPage() {
           ActionDelete={handleDelete}
         />
       </section>
+      <ProductModal
+        open={open}
+        cancel={() => handleModal()}
+        setReload={setReload}
+      />
     </HomeLayout>
   )
 }

@@ -1,6 +1,6 @@
-import styles from './login.module.css'
 import { factoryShoes } from '../../../assets'
 import LoginForm from '../../loginForm'
+import styles from './login.module.css'
 
 export default function LoginPage() {
   return (

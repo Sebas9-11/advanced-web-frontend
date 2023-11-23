@@ -16,24 +16,14 @@ export default function HttpEmployeeApiService() {
     return axios.delete(path + 'employees/' + id)
   }
 
+  function updateEmployee(data: employee, id: any) {
+    return axios.put(path + 'employees/' + id, data)
+  }
+
   const addEmployee = async (data: employee) => {
     axios({
       method: 'post',
       url: path + 'employees',
-      data: data,
-    })
-      .then((res) => {
-        console.log(res)
-      })
-      .catch((err) => {
-        console.log(err)
-      })
-  }
-
-  const updateEmployee = async (data: employee, id: any) => {
-    axios({
-      method: 'put',
-      url: path + 'employees/' + id,
       data: data,
     })
       .then((res) => {

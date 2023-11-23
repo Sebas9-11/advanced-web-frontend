@@ -1,4 +1,4 @@
-type rolType = 'admin' | 'cortador' | 'guarnecedor' | 'ensamblador'
+type rolType = 'admin' | 'cortador' | 'guarnecedor' | 'ensamblador' | ''
 
 export interface rol {
   id: number
@@ -6,24 +6,32 @@ export interface rol {
 }
 
 export interface employee {
-  employee_id: number
-  rol_id: rolType
+  employee_id?: number
+  rol_id: number
   name: string
   last_name: string
-  state: boolean
+  status: boolean
 }
 
 export interface product {
-  id: number
+  product_id?: number
   name: string
   price: number
-  unitPayment: number
-  packagePayment: number
+  pay_packet: number
+  unit_payment: number
+  type: string
+}
+
+export interface product2 {
+  name: string
+  price: number
+  unit_payment: number
+  package_payment: number
   type: string
 }
 
 export interface production {
-  id: number
+  id?: number
   employeeId: number
   productId: number
   quantity: number
