@@ -11,3 +11,10 @@
   background-color: var(--success-color);
   color: var(--white-color);
 }
+
+.btn_container {
+  display: flex;
+  align-items: flex-end;
+  justify-content: flex-end;
+  margin: 0 0 0.5rem 0;
+}

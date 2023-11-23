@@ -1,5 +1,5 @@
 import { Form, Input, InputNumber, Modal } from 'antd'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import HttpProductsApiService from '../../APIs/product'
 import { product } from '../../types/types'
 
@@ -7,15 +7,21 @@ interface IProductModalProps {
   open: boolean
   cancel: () => void
   setReload: (reload: boolean) => void
+  initialValues?: product
 }
 
 export default function ProductModal({
   open,
   cancel,
   setReload,
+  initialValues,
 }: IProductModalProps) {
   const [form] = Form.useForm()
   const [loading, setLoading] = useState(false)
+
+  useEffect(() => {
+    form.setFieldsValue(initialValues)
+  }, [initialValues, form])
 
   const handleCreate = async () => {
     try {
@@ -41,11 +47,36 @@ export default function ProductModal({
     }
   }
 
+  const handleUpdate = async () => {
+    try {
+      setLoading(true)
+      const values = await form.validateFields()
+      const productData = {
+        product_id: initialValues?.product_id,
+        name: values.name,
+        price: values.price,
+        pay_packet: values.pay_packet,
+        type: values.type,
+        unit_payment: values.unit_payment,
+      }
+
+      let id = initialValues?.product_id
+      await HttpProductsApiService().updateProduct(productData, id as number)
+    } catch (error) {
+      console.error('Error updating product:', error)
+    } finally {
+      setReload(true)
+      setLoading(false)
+      form.resetFields()
+      cancel()
+    }
+  }
+
   return (
     <Modal
       visible={open}
       onCancel={cancel}
-      onOk={handleCreate}
+      onOk={initialValues?.product_id ? handleUpdate : handleCreate}
       confirmLoading={loading}
       okButtonProps={{
         disabled:

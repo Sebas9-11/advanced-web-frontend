@@ -16,9 +16,14 @@ export default function HttpProductsApiService() {
     return axios.post(path + 'products', product)
   }
 
+  function updateProduct(product: product, id: number) {
+    return axios.put(path + 'products/' + id, product)
+  }
+
   return {
     getProduct,
     deleteProduct,
     addProduct,
+    updateProduct,
   }
 }

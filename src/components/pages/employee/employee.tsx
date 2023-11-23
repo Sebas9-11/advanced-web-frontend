@@ -55,10 +55,6 @@ export default function EmployeePage() {
     }
   }
 
-  const handleModal = () => {
-    setOpen(!open)
-  }
-
   const handleCloseModal = () => {
     console.log('close modal', initialValues)
 
@@ -73,11 +69,13 @@ export default function EmployeePage() {
         <h1>Shoes Makers Inc.</h1>
       </header>
       <section>
-        <BasicBtn
-          text="Add product"
-          color="blue"
-          onClick={() => handleModal()}
-        />
+        <div className={styles.btn_container}>
+          <BasicBtn
+            text="Add employee"
+            color="blue"
+            onClick={() => setOpen(!open)}
+          />
+        </div>
         <Tables
           data={data}
           header={header}
@@ -87,7 +85,7 @@ export default function EmployeePage() {
       </section>
       <EmployeeModal
         open={open}
-        cancel={() => handleModal()}
+        cancel={() => setOpen(!open)}
         setReload={setReload}
       />
       <EmployeeModal

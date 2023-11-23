@@ -22,14 +22,6 @@ export interface product {
   type: string
 }
 
-export interface product2 {
-  name: string
-  price: number
-  unit_payment: number
-  package_payment: number
-  type: string
-}
-
 export interface production {
   id?: number
   employeeId: number

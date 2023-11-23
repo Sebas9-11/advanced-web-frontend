@@ -13,6 +13,8 @@ export default function ProductPage() {
   const httpProductsApiService = HttpProductsApiService()
   const [open, setOpen] = useState<boolean>(false)
   const [reload, setReload] = useState<boolean>(false)
+  const [initialValues, setInitialValues] = useState<product>()
+  const [openEdit, setOpenEdit] = useState<boolean>(false)
 
   const getProducts = async () => {
     const res = await httpProductsApiService.getProduct()
@@ -39,7 +41,8 @@ export default function ProductPage() {
   }, [reload])
 
   const handleEdit = (product: product) => {
-    console.log(product)
+    setInitialValues(product)
+    setOpenEdit(true)
   }
 
   const handleDelete = (product: product) => {
@@ -52,9 +55,9 @@ export default function ProductPage() {
     }
   }
 
-  const handleModal = () => {
-    setOpen(!open)
-    console.log('modal', open)
+  const handleCloseModal = () => {
+    setInitialValues(undefined)
+    setOpenEdit(false)
   }
 
   return (
@@ -67,7 +70,7 @@ export default function ProductPage() {
           <BasicBtn
             text="Add product"
             color="blue"
-            onClick={() => handleModal()}
+            onClick={() => setOpen(!open)}
           />
         </div>
         <Tables
@@ -79,8 +82,14 @@ export default function ProductPage() {
       </section>
       <ProductModal
         open={open}
-        cancel={() => handleModal()}
+        cancel={() => setOpen(!open)}
         setReload={setReload}
+      />
+      <ProductModal
+        open={openEdit}
+        cancel={() => handleCloseModal()}
+        setReload={setReload}
+        initialValues={initialValues}
       />
     </HomeLayout>
   )
