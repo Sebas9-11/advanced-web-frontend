@@ -36,10 +36,21 @@ export default function ProductionPage() {
     getEmployees()
   }, [])
 
+  const dd = {
+    content: [
+      {
+        style: 'tableExample',
+        table: {
+          widths: ['*'],
+          body: [],
+        },
+      },
+    ],
+  }
 
 
   const handleEdit = () => {
-    pdfMake.createPdf('farid').open();
+    pdfMake.createPdf(dd).open()
   }
 
   const handleDelete = (employee: production) => {
