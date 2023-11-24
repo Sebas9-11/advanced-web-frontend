@@ -20,7 +20,7 @@ export default function ProductionPage() {
     const documentDefinition = {
       content: [
         {
-          text: 'Shoes Makers Inc.',
+          text: 'Shoes Makers Inc. - Reporte de produccion',
           fontSize: 16,
           bold: true,
         },
