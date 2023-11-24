@@ -1,6 +1,5 @@
-// @ts-ignore
 import pdfMake from 'pdfmake/build/pdfmake'
-import { default as pdfFonts } from 'pdfmake/build/vfs_fonts'
+import pdfFonts from 'pdfmake/build/vfs_fonts'
 import { useEffect, useState } from 'react'
 import HomeLayout from '../../../layouts/homeLayout'
 import { production, tableHeader } from '../../../types/types'
