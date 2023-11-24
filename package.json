@@ -14,7 +14,7 @@
     "@types/react-pdf": "^7.0.0",
     "antd": "^5.11.0",
     "axios": "^1.6.1",
-    "pdfmake": "^0.2.8",
+    "pdfmake": "0.1.68",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-pdf": "^7.5.1",
