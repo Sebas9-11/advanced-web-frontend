@@ -7,9 +7,9 @@ import Tables from '../../tables'
 import HttpProductionApiService from './../../../APIs/production'
 import styles from './production.module.css'
 
-pdfMake.vfs = pdfFonts.pdfMake.vfs
-
 export default function ProductionPage() {
+  pdfMake.vfs = pdfFonts.pdfMake.vfs
+
   const [data, setData] = useState<production[]>([])
   const [header, setHeader] = useState<tableHeader[]>([])
   const httpEmployeeApiService = HttpProductionApiService()
